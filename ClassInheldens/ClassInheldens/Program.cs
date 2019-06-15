@@ -13,6 +13,17 @@ namespace ClassInheldens
             Console.WriteLine("Hello World!");
         }
 
+        static void Activity(Animal[] zoo)
+        {
+            foreach (var animal in zoo)
+            {
+                if(animal is IFlyable flyable)
+                {
+                    flyable.Fly(4);
+                }
+            }
+        }
+
         static void ZooStatus(Animal[] zoo)
         {
             foreach (var animal in zoo)
