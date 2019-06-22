@@ -11,6 +11,10 @@ namespace ClassInheldens
         {
             this.
         }
+        public override void Eat(string nameEat, double weightEat)
+        {
+
+        }
     }
 }
 

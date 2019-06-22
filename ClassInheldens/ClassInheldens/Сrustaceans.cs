@@ -18,6 +18,9 @@ namespace ClassInheldens
             if (nameEat == "meat")
             {
                 Weight += weightEat;
+            }
+            else if (nameEat == "aslfh")
+            {
 
             }
         }
