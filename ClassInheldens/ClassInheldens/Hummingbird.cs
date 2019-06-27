@@ -4,10 +4,10 @@ using System.Text;
 
 namespace ClassInheldens
 {
-    class Bee : Insects, IWalking, IFlyable
+    class Hummingbird : Bird, IFlyable, IWalking
     {
-        public Bee(double weight, string name)
-            :base(weight,name,true)
+        public Hummingbird(double weight, string name)
+            : base(weight, name)
         {
 
         }
@@ -16,20 +16,20 @@ namespace ClassInheldens
         public double walkDistance = 20;
         public void Walk(double range) => range = walkDistance;
         public override void Eat(string nameEat, double weightEat)
-        {       
+        {
             if (nameEat == "meat")
             {
-                Weight -= weightEat*1.4;
-                LastEatType = nameEat;
+                Weight += weightEat;
+                LastEatType = "Bed input, try again";
             }
             else if (nameEat == "cake")
             {
-                Weight += weightEat*1.5;
+                Weight += weightEat * 1.4;
                 LastEatType = nameEat;
             }
             else if (nameEat == "sweet")
             {
-                Weight += weightEat*1.1;
+                Weight += weightEat * 1.1;
                 LastEatType = nameEat;
             }
             else if (nameEat == "pollen")
@@ -41,7 +41,7 @@ namespace ClassInheldens
             {
                 LastEatType = "die";
             }
-            else if (weightEat > Weight / 2)
+            else if (weightEat > Weight * 0.75)
             {
                 LastEatWeight = weightEat;
             }
@@ -50,8 +50,9 @@ namespace ClassInheldens
         {
             get
             {
-                return (LastEatType == "meat" || LastEatType == "cake" || LastEatType == "sweet" || LastEatType == "pollen") && (LastEatWeight < Weight/2 || LastEatWeight > Weight/10) && (flyDistance>5) && (walkDistance>1);
+                return (LastEatType == "meat" || LastEatType == "cake" || LastEatType == "sweet" || LastEatType == "pollen" || LastEatType == "honey") && (LastEatWeight < Weight / 2 || LastEatWeight > Weight / 10) && (walkDistance > 0.5) && (flyDistance < 10);
             }
         }
     }
 }
+

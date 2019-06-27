@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ClassInheldens
 {
-    class Bird : Vertebrates
+    abstract class Bird : Vertebrates
     {
         public Bird(double weight, string name)
             : base(weight, name, 4)

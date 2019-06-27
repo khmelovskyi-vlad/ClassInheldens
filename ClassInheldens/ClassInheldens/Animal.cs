@@ -15,5 +15,7 @@ namespace ClassInheldens
         public double Weight { get; set; }
         public string Name { get; set; }
         public abstract void Eat(string nameEat, double weightEat);
+        protected double LastEatWeight = 0;
+        protected string LastEatType = "";
     }
 }

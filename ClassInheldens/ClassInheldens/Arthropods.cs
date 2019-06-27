@@ -11,15 +11,6 @@ namespace ClassInheldens
         {
             this.DickCount = dickCount;
         }
-        protected int LastEatWeight = 10;
-        protected string LastEatType = "dgf";
-        public override bool Peaces
-        {
-            get
-            {
-                return LastEatType == "meat" && LastEatWeight > 10;
-            }
-        }
         public override void Eat(string nameEat, double weightEat)
         {
             if (nameEat == "meat")
@@ -29,6 +20,13 @@ namespace ClassInheldens
             else if (nameEat == "aslfh")
             {
                 LastEatType = "Bobick dovolen";
+            }
+        }
+        public override bool Peaces
+        {
+            get
+            {
+                return LastEatType == "meat" || LastEatWeight > 10;
             }
         }
         public int DickCount { get; set; }

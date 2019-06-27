@@ -11,11 +11,45 @@ namespace ClassInheldens
         {
 
         }
-
-        public void Walk(double range)
+        public double walkDistance = 20;
+        public void Walk(double range) => range = walkDistance;
+        public override void Eat(string nameEat, double weightEat)
         {
-            throw new NotImplementedException();
+            if (nameEat == "meat")
+            {
+                Weight += weightEat;
+                LastEatType = nameEat;
+            }
+            else if (nameEat == "cake")
+            {
+                Weight += weightEat * 1.5;
+                LastEatType = nameEat;
+            }
+            else if (nameEat == "sweet")
+            {
+                Weight += weightEat * 1.1;
+                LastEatType = nameEat;
+            }
+            else if (nameEat == "kiwi")
+            {
+                Weight += weightEat;
+                LastEatType = nameEat;
+            }
+            else if (nameEat == "vodka")
+            {
+                LastEatType = "die";
+            }
+            else if (weightEat > Weight*0.75)
+            {
+                LastEatWeight = weightEat;
+            }
+        }
+        public override bool Peaces
+        {
+            get
+            {
+                return (LastEatType == "meat" || LastEatType == "cake" || LastEatType == "sweet" || LastEatType == "pollen") && (LastEatWeight < Weight / 2 || LastEatWeight > Weight / 10) && (walkDistance > 1);
+            }
         }
     }
-}
 }
