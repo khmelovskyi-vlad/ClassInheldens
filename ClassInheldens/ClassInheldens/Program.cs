@@ -20,16 +20,17 @@ namespace ClassInheldens
             ActivityFly(zoo);
             ActivitySwim(zoo);
             ActivityWalk(zoo);
+            StickCountPickUp(zoo);
+            PollinateFlowers(zoo);
             Eating(zoo);
             ZooStatus(zoo);
-            Console.WriteLine("Hello World!");
             Console.ReadKey();
         }
         static void Eating(Animal[] zoo)
         {
             for(int i = 0; i < zoo.Length; i++)
             {
-                zoo[i].Eat("meat", 3);
+                zoo[i].Eat("meat", 0.01);
             }
         }
 
@@ -39,7 +40,7 @@ namespace ClassInheldens
             {
                 if(animal is IFlyable flyable)
                 {
-                    flyable.Fly(4);
+                    flyable.Fly(13);
                 }
             }
         }
@@ -60,7 +61,17 @@ namespace ClassInheldens
             {
                 if (animal is IWalking walking)
                 {
-                    walking.Walk(4);
+                    walking.Walk(0.9);
+                }
+            }
+        }
+        static void StickCountPickUp(Animal[] zoo)
+        {
+            foreach (var animal in zoo)
+            {
+                if (animal is IPikUpStick pickUp)
+                {
+                    pickUp.Stick(30);
                 }
             }
         }
@@ -75,6 +86,16 @@ namespace ClassInheldens
                 else
                 {
                     Console.WriteLine($"{animal.Name} is pleased");
+                }
+            }
+        }
+        static void PollinateFlowers (Animal[] zoo)
+        {
+            foreach (var animal in zoo)
+            {
+                if(animal is IPollination poll)
+                {
+                    poll.Pollinate(17);
                 }
             }
         }

@@ -11,12 +11,12 @@ namespace ClassInheldens
         {
 
         }
-        public double flyDistance = 20;
-        public void Fly(double range) => range = flyDistance;
-        public double swimDistance = 20;
-        public void Swim(double range) => range = swimDistance;
-        public double walkDistance = 20;
-        public void Walk(double range) => range = walkDistance;
+        public double flyDistance = 0;
+        public void Fly(double range) => flyDistance = range;
+        public double swimDistance = 0;
+        public void Swim(double range) => swimDistance = range;
+        public double walkDistance = 0;
+        public void Walk(double range) => walkDistance = range;
         public override void Eat(string nameEat, double weightEat)
         {
             if (nameEat == "meat")
@@ -26,7 +26,7 @@ namespace ClassInheldens
             }
             else if (nameEat == "cake")
             {
-                Weight += weightEat * 1.4;
+                Weight += weightEat * 1.04;
                 LastEatType = nameEat;
             }
             else if (nameEat == "sweet")
@@ -43,16 +43,13 @@ namespace ClassInheldens
             {
                 LastEatType = "die";
             }
-            else if (weightEat > Weight * 0.75)
-            {
                 LastEatWeight = weightEat;
-            }
         }
         public override bool Peaces
         {
             get
             {
-                return (LastEatType == "meat" || LastEatType == "cake" || LastEatType == "sweet" || LastEatType == "mandarin" || LastEatType == "hannibal") && (LastEatWeight < Weight / 2 || LastEatWeight > Weight / 10) && (walkDistance > 0.5) && (swimDistance < 5) && (flyDistance < 10);
+                return (LastEatType == "meat" || LastEatType == "cake" || LastEatType == "sweet" || LastEatType == "mandarin" || LastEatType == "hannibal") && (LastEatWeight < Weight / 2 && LastEatWeight > Weight / 10) && (walkDistance < 0.5) && (swimDistance < 0.5) && (flyDistance > 10);
             }
         }
     }

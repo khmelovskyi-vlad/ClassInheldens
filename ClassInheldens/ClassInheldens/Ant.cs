@@ -4,15 +4,17 @@ using System.Text;
 
 namespace ClassInheldens
 {
-    class Ant : Insects, IWalking
+    class Ant : Insects, IWalking, IPikUpStick
     {
         public Ant(double weight, string name)
             : base(weight, name, false)
         {
 
         }
-        public double walkDistance = 20;
-        public void Walk(double range) => range = walkDistance;
+        public int stickCount = 0;
+        public void Stick(int count) => stickCount = count;
+        public double walkDistance = 0;
+        public void Walk(double range) => walkDistance = range;
         public override void Eat(string nameEat, double weightEat)
         {
             if (nameEat == "meat")
@@ -22,7 +24,7 @@ namespace ClassInheldens
             }
             else if (nameEat == "cake")
             {
-                Weight += weightEat * 1.5;
+                Weight += weightEat * 1.05;
                 LastEatType = nameEat;
             }
             else if (nameEat == "sweet")
@@ -39,16 +41,13 @@ namespace ClassInheldens
             {
                 LastEatType = "die";
             }
-            else if (weightEat > Weight*0.75)
-            {
                 LastEatWeight = weightEat;
-            }
         }
         public override bool Peaces
         {
             get
             {
-                return (LastEatType == "meat" || LastEatType == "cake" || LastEatType == "sweet" || LastEatType == "pollen") && (LastEatWeight < Weight / 2 || LastEatWeight > Weight / 10) && (walkDistance > 1);
+                return (LastEatType == "meat" || LastEatType == "cake" || LastEatType == "sweet" || LastEatType == "pollen") && (LastEatWeight < Weight / 2 && LastEatWeight > Weight / 10) && (walkDistance < 1) && (stickCount>15);
             }
         }
     }

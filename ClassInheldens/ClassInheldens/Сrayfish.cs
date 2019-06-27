@@ -11,10 +11,10 @@ namespace ClassInheldens
         {
 
         }
-        public double swimDistance = 20;
-        public void Swim(double range) => range = swimDistance;
-        public double walkDistance = 20;
-        public void Walk(double range) => range = walkDistance;
+        public double swimDistance = 0;
+        public void Swim(double range) => swimDistance = range;
+        public double walkDistance = 0;
+        public void Walk(double range) => walkDistance = range;
         public override void Eat(string nameEat, double weightEat)
         {
             if (nameEat == "meat")
@@ -24,7 +24,7 @@ namespace ClassInheldens
             }
             else if (nameEat == "cake")
             {
-                Weight += weightEat * 1.4;
+                Weight += weightEat * 1.04;
                 LastEatType = nameEat;
             }
             else if (nameEat == "sweet")
@@ -41,16 +41,13 @@ namespace ClassInheldens
             {
                 LastEatType = nameEat;
             }
-            else if (weightEat > Weight * 0.75)
-            {
                 LastEatWeight = weightEat;
-            }
         }
         public override bool Peaces
         {
             get
             {
-                return (LastEatType == "meat" || LastEatType == "cake" || LastEatType == "sweet" || LastEatType == "fish" || LastEatType == "wolf") && (LastEatWeight < Weight / 2 || LastEatWeight > Weight / 10) && (walkDistance > 0.5) && (swimDistance < 7);
+                return (LastEatType == "meat" || LastEatType == "cake" || LastEatType == "sweet" || LastEatType == "fish" || LastEatType == "wolf") && (LastEatWeight < Weight / 2 && LastEatWeight > Weight / 10) && (walkDistance < 0.5) && (swimDistance > 3);
             }
         }
     }
